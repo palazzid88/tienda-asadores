@@ -1,3 +1,4 @@
+// sanity.js
 import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
 
@@ -17,7 +18,7 @@ export function urlFor(source) {
   return builder.image(source)
 }
 
-// Funciones para consultas
+// Obtener categorías
 export async function getCategories() {
   const query = `*[_type == "category"]{
     _id,
@@ -27,13 +28,29 @@ export async function getCategories() {
   return sanityClient.fetch(query)
 }
 
+// Obtener todos los productos
 export async function getProducts() {
   const query = `*[_type == "product"]{
     _id,
     title,
+    slug { current },
     image,
     category->{slug, title},
     variants
   }`
   return sanityClient.fetch(query)
+}
+
+// Obtener un producto por su slug
+export async function getProductBySlug(slug) {
+  const query = `*[_type == "product" && slug.current == $slug][0]{
+    _id,
+    title,
+    slug { current },
+    image,
+    description,
+    category->{slug, title},
+    variants
+  }`
+  return sanityClient.fetch(query, { slug })
 }
