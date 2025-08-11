@@ -7,11 +7,12 @@ export default function ProductCard({ product }) {
   const productSlug = product.slug?.current || product.slug
   const mainVariant = product.variants?.[0] || {}
 
-  console.log("slug", productSlug)
-  console.log("product", product)
+  // console.log("slug", productSlug)
+  // console.log("product", product)
 
   return (
     <div className="w-60 flex-shrink-0 border rounded shadow p-4 flex flex-col">
+      {/* <p>Hola desde ProductCard</p> */}
       {imageUrl ? (
         <Image
           src={imageUrl}

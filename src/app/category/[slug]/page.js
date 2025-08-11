@@ -20,7 +20,9 @@ export default async function CategoryPage({ params }) {
       _id,
       title,
       image,
-      variants
+      variants,
+      "slug": slug.current,
+
     }
   }`
 

@@ -26,7 +26,9 @@ export default async function Navbar() {
           <button className="hover:underline cursor-pointer">
             Categorías ▼
           </button>
-          <ul className="absolute hidden group-hover:block bg-white text-gray-900 mt-2 rounded shadow-lg">
+          <ul className="absolute left-0 hidden group-hover:block bg-white text-gray-900 mt-0 rounded shadow-lg z-50">
+
+          {/* <ul className="absolute hidden group-hover:block bg-white text-gray-900 mt-2 rounded shadow-lg"> */}
             {categories.map(cat => (
               <li key={cat.slug.current || cat.slug}>
                 <Link
